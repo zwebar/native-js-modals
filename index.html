@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Native JS Modals</title>
+    <script src="js/native-modals.js"></script>
+</head>
+<body>
+    <div>
+        <a href="" data-bmodal="testModal">Click here</a> to open the modal.<br>
+        <a href="" data-bmodal="testModal2">Click here</a> to open the second modal.
+    </div>
+
+    <div id="testModal" class="bModal">
+        <form action="">
+            <div class="bModal-header">Modal 1</div>
+            <div class="bModal-body">Body of the modal</div>
+            <div class="bModal-buttons">
+                <a href="" class="bModal-button bModal-button__ok" data-bmodal-callback="callback">Ok</a>
+                <a href="" class="bModal-button bModal-button__cancel">Cancel</a>
+            </div>
+        </form>
+    </div>
+    <div id="testModal2" class="bModal">
+        <form action="">
+            <div class="bModal-header">Modal 2</div>
+            <div class="bModal-body">Body of the modal</div>
+            <div class="bModal-buttons">
+                <a href="" class="bModal-button bModal-button__ok" data-bmodal-callback="callback">Ok</a>
+                <a href="" class="bModal-button bModal-button__cancel">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
