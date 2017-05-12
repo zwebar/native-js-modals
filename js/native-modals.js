@@ -1,5 +1,12 @@
 (function () {
     this.init = function (_options) {
+        const defaultOptions = {
+            watch: true,
+            backdrop: true
+        };
+
+        const options = Object.assign({}, defaultOptions, _options);
+
         let $modalTriggers = document.querySelectorAll("[data-nModal]");
         let $modalContainer = document.querySelector("#nModal-container");
         let $modalPlaceholder;
@@ -10,16 +17,19 @@
             let $modalTargetDom = document.getElementById(modalTarget);
             let $nodeToCopy;
 
+            // See if we can find a node to copy,
+            // i.e. does the targeted node contain anything
             $modalTargetDom.childNodes.forEach(function (node) {
                 if (node.nodeType === Node.ELEMENT_NODE) {
                     $nodeToCopy = node;
                 }
             });
 
+            // Copy the targeted node to the nModal placeholder
             if ($nodeToCopy) {
                 let $modalCopy = $nodeToCopy.cloneNode(true);
 
-                $modalContainer.classList.toggle("active");
+                $modalContainer.classList.add("active");
                 while ($modalPlaceholder.firstChild) {
                     $modalPlaceholder.removeChild($modalPlaceholder.firstChild);
                 }
@@ -39,34 +49,43 @@
         };
 
         if (!$modalContainer) {
+            // Add the nModal container
             const $_container = document.createElement("div");
             $_container.setAttribute("id", "nModal-container");
+            if (options.backdrop) { $_container.classList.add('backdrop'); }
+
             document.body.insertAdjacentElement("afterbegin", $_container);
 
+            // Add the nModal
             const $_modalPlaceholder = document.createElement("div");
             $_modalPlaceholder.setAttribute("id", "nModal-placeholder");
+
             $_container.insertAdjacentElement("afterbegin", $_modalPlaceholder);
 
+            // Assign variables
             $modalContainer = $_container;
             $modalPlaceholder = $_modalPlaceholder;
         }
 
+        // nModal close event
         $modalContainer.addEventListener("click", function (e) {
             if (
                 e.target.id === "nModal-container" ||
                 e.target.classList.contains("nModal-button__cancel")
             ) {
-                $modalContainer.classList.toggle("active");
+                $modalContainer.classList.remove("active");
             }
         });
 
+        // Assign the nModal triggers
         $modalTriggers.forEach(function ($modalTrigger) {
             $modalTrigger.addEventListener("click", function (e) {
                 modalTriggerClickEventHandler(e, $modalTrigger);
             });
         });
 
-        if (_options.watch) {
+        // Watch the DOM for changes and assign triggers
+        if (options.watch) {
             var observer = new MutationObserver(function (mutations) {
                 mutations.forEach(function (mutation) {
                     for (var i = 0; i < mutation.addedNodes.length; i++) {
@@ -85,11 +104,13 @@
         }
     };
 
+    // Close the nModal
     this.close = function () {
         let $modalContainer = document.querySelector("#nModal-container");
-        $modalContainer.classList.toggle("active");
+        $modalContainer.classList.remove("active");
     };
 
+    // Expose nModal variable
     window.nModal = {
         init: this.init,
         close: this.close
@@ -99,7 +120,8 @@
 
 document.addEventListener("DOMContentLoaded", function (event) {
     nModal.init({
-        watch: true
+        watch: true,
+        backdrop: true
     });
 
     window.callback = function (arg) {

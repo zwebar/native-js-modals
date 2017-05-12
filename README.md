@@ -33,22 +33,22 @@ _aka nModal_
 ```
 
 ### 3. Create a trigger
+The ```data-nmodal``` attribute refers to the ID of the targeted modal element.
 ```html
-<a href="" data-bmodal="testModal">Click here</a> to open the modal.<br>
+<a href="" data-nmodal="testModal">Click here</a> to open the modal.
 ```
 
 
 ### 4. Initialize
 ```javascript
-bModal.init({
-  // Options go here
-});
+nModal.init({ watch: true });
 ```
 
 
-| Property        | Default Value           | Function  |
-| --------------- |:-----------------------:| ---------:|
-| watch      | true/false | Automatically watches for DOM changes and injects newly created/updated modals
+| Property        | Possible values           | Function  |
+| --------------- |:-------------------------:| ---------:|
+| watch           | true/false                | Automatically watches for DOM changes and injects newly created/updated modals |
+| backdrop        | true/false                | Adds a backdrop to the modal |
 
 ### 5. You're done!
 If you want to further customize the modal or use callbacks and custom functions, read below.
