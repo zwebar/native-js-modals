@@ -7,6 +7,10 @@
     height: 100%;
     overflow: auto;
 
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+
     &.active {
         display: block;
 
@@ -33,6 +37,7 @@
             animation: fadein 200ms;
 
             pointer-events: all;
+            box-sizing: border-box;
         }
     }
 
@@ -40,7 +45,6 @@
         display: block;
         box-shadow: 0 3px 10px 0 rgba(84, 84, 84, 0.3);
         position: relative;
-        width: 300px;
         top: 50%;
         left: 50%;
         margin-top: auto;
@@ -49,12 +53,72 @@
         transform: translateY(-50%) translateX(-50%);
         background-color: #fff;
         border-radius: 3px;
-        padding: 20px;
-        -webkit-transition: all 200ms ease-in-out;
-        -moz-transition: all 200ms ease-in-out;
-        -ms-transition: all 200ms ease-in-out;
-        -o-transition: all 200ms ease-in-out;
-        transition: all 200ms ease-in-out;
+        overflow: hidden;
+        font-family: inherit, sans-serif;
+        width: 300px;
+
+        &.small {
+            width: 300px;
+        }
+
+        &.large {
+            width: 500px;
+        }
+
+        &.max {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nModal-header {
+            background: rgb(240, 240, 240);
+            padding: 20px;
+            width: 100%;
+        }
+
+        .nModal-body {
+            padding: 20px;
+        }
+        .nModal-buttons {
+            padding: 20px;
+            text-align: right;
+
+            & > .nModal-button {
+                display: inline-block;
+                border-radius: 3px;
+                padding: 10px 14px;
+                color: white;
+                text-decoration: none;
+                margin-left: 3px;
+                margin-right: 3px;
+
+                &:first-of-type {
+                    margin-left: 0px;
+                }
+
+                &:last-of-type {
+                    margin-right: 0px;
+                }
+
+                &.nModal-button__ok {
+                    background-color: #8BC34A;
+                    &:hover {
+                        background-color: #7CB342;
+                    }
+                }
+
+                &.nModal-button__cancel {
+                    background-color: #F44336;
+                    &:hover {
+                        background-color: #E53935;
+                    }
+                }
+
+                &:focus {
+                    box-shadow: 0 3px 10px 0 rgba(84, 84, 84, 0.3);
+                }
+            }
+        }
     }
 }
 

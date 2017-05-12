@@ -14,6 +14,7 @@
         const modalTriggerClickEventHandler = function (e, $modalTrigger) {
             e.preventDefault();
             const modalTarget = $modalTrigger.dataset.nmodal;
+            const modalSize = $modalTrigger.dataset.nmodalSize ? $modalTrigger.dataset.nmodalSize : "small";
             let $modalTargetDom = document.getElementById(modalTarget);
             let $nodeToCopy;
 
@@ -27,13 +28,28 @@
 
             // Copy the targeted node to the nModal placeholder
             if ($nodeToCopy) {
-                let $modalCopy = $nodeToCopy.cloneNode(true);
+                const $modalCopy = $nodeToCopy.cloneNode(true);
+                $modalPlaceholder.classList.remove("large", "small", "max");
+
+                switch (modalSize) {
+                    case "small":
+                        $modalPlaceholder.classList.add("small");
+                        break;
+                    case "large":
+                        $modalPlaceholder.classList.add("large");
+                        break;
+                    case "max":
+                        $modalPlaceholder.classList.add("max");
+                        break;
+                }
 
                 $modalContainer.classList.add("active");
                 while ($modalPlaceholder.firstChild) {
                     $modalPlaceholder.removeChild($modalPlaceholder.firstChild);
                 }
-                let $newElement = $modalPlaceholder.insertAdjacentElement("afterbegin", $modalCopy);
+                const $newElement = $modalPlaceholder.insertAdjacentElement("afterbegin", $modalCopy);
+
+                // Register callbacks in the modal
                 $modalPlaceholder
                     .querySelectorAll(".nModal-button")
                     .forEach(function ($element) {
@@ -102,6 +118,17 @@
                 childList: true
             });
         }
+
+        document.addEventListener("keydown", function (event) {
+            const key = event.key;
+            if (
+                key === "Escape" &&
+                $modalContainer.classList.contains("active")
+            ) {
+                event.preventDefault();
+                nModal.close();
+            }
+        })
     };
 
     // Close the nModal
