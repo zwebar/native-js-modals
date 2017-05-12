@@ -1,12 +1,12 @@
 (function () {
     this.init = function (_options) {
-        let $modalTriggers = document.querySelectorAll("[data-bModal]");
-        let $modalContainer = document.querySelector("#bModal-container");
+        let $modalTriggers = document.querySelectorAll("[data-nModal]");
+        let $modalContainer = document.querySelector("#nModal-container");
         let $modalPlaceholder;
 
         const modalTriggerClickEventHandler = function (e, $modalTrigger) {
             e.preventDefault();
-            const modalTarget = $modalTrigger.dataset.bmodal;
+            const modalTarget = $modalTrigger.dataset.nmodal;
             let $modalTargetDom = document.getElementById(modalTarget);
             let $nodeToCopy;
 
@@ -25,13 +25,13 @@
                 }
                 let $newElement = $modalPlaceholder.insertAdjacentElement("afterbegin", $modalCopy);
                 $modalPlaceholder
-                    .querySelectorAll(".bModal-button")
+                    .querySelectorAll(".nModal-button")
                     .forEach(function ($element) {
                         $element.addEventListener("click", function (e) {
                             e.preventDefault();
 
-                            if ($element.dataset.bmodalCallback) {
-                                window[$element.dataset.bmodalCallback]($newElement);
+                            if ($element.dataset.nmodalCallback) {
+                                window[$element.dataset.nmodalCallback]($newElement);
                             }
                         });
                     });
@@ -40,11 +40,11 @@
 
         if (!$modalContainer) {
             const $_container = document.createElement("div");
-            $_container.setAttribute("id", "bModal-container");
+            $_container.setAttribute("id", "nModal-container");
             document.body.insertAdjacentElement("afterbegin", $_container);
 
             const $_modalPlaceholder = document.createElement("div");
-            $_modalPlaceholder.setAttribute("id", "bModal-placeholder");
+            $_modalPlaceholder.setAttribute("id", "nModal-placeholder");
             $_container.insertAdjacentElement("afterbegin", $_modalPlaceholder);
 
             $modalContainer = $_container;
@@ -53,8 +53,8 @@
 
         $modalContainer.addEventListener("click", function (e) {
             if (
-                e.target.id === "bModal-container" ||
-                e.target.classList.contains("bModal-button__cancel")
+                e.target.id === "nModal-container" ||
+                e.target.classList.contains("nModal-button__cancel")
             ) {
                 $modalContainer.classList.toggle("active");
             }
@@ -71,9 +71,11 @@
                 mutations.forEach(function (mutation) {
                     for (var i = 0; i < mutation.addedNodes.length; i++) {
                         let $modalTrigger = mutation.addedNodes[i];
-                        $modalTrigger.addEventListener("click", function (e) {
-                            modalTriggerClickEventHandler(e, $modalTrigger);
-                        });
+                        if ($modalTrigger.dataset.hasOwnProperty('nmodal')) {
+                            $modalTrigger.addEventListener("click", function (e) {
+                                modalTriggerClickEventHandler(e, $modalTrigger);
+                            });
+                        }
                     }
                 });
             });
@@ -84,11 +86,11 @@
     };
 
     this.close = function () {
-        let $modalContainer = document.querySelector("#bModal-container");
+        let $modalContainer = document.querySelector("#nModal-container");
         $modalContainer.classList.toggle("active");
     };
 
-    window.bModal = {
+    window.nModal = {
         init: this.init,
         close: this.close
     };
@@ -96,13 +98,13 @@
 
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    bModal.init({
+    nModal.init({
         watch: true
     });
 
     window.callback = function (arg) {
         console.info('Callback', arg);
-        bModal.close();
+        nModal.close();
     }
 
 });
