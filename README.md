@@ -46,17 +46,17 @@ nModal.init({ watch: true });
 
 
 | Property        | Possible values           | Function  |
-| --------------- |:-------------------------:| :---------|
-| ```watch```           | ```true```/```false```                | Automatically watches for DOM changes and injects newly created/updated modals |
-| ```backdrop```        | ```true```/```false```                | Adds a backdrop to the modal |
-| ```size```            | ```"small"```/```"large"```/```"maximised"```                | Assigns a size to the modal |
+| --------------- |:-------------------------| :---------|
+| ```watch```           | ```true``` ```false```                | Automatically watches for DOM changes and injects newly created/updated modals |
+| ```backdrop```        | ```true``` ```false```                | Adds a backdrop to the modal |
+| ```size```            | ```"small"``` ```"large"``` ```"max"```                | Assigns a size to the modal |
 
 There are also in-line properties you can access when triggering a modal.
 ```html
 <a  href=""
-    data-nmodal-target="testModal"  <!-- Targets the specified ID, in this case `#testModal` -->
-    data-nmodal-size="small"        <!-- Specifies the size of the triggered modal, in this case `small` -->
->Open the modal</a>
+    data-nmodal-target="testModal"
+    data-nmodal-size="max"
+>Open a maximised modal that targets #testModal</a>
 ```
 
 ### 5. You're done!
