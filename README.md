@@ -63,7 +63,9 @@ If you want to use a callback, add the ```data-nmodal-callback``` attribute, lik
 ```
 
 ```javascript
-function callback(){
-  console.log('callback called');
+function callback(formElement){
+  console.log('callback called with', formElement);
 }
 ```
+
+*The callback is by default called by passing the ```<form></form>``` inside the modal, so you can use the data stored in the modal.*
