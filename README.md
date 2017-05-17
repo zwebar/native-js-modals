@@ -1,6 +1,8 @@
 # native-js-modals
 _Easily create modals without external dependencies._
-_aka nModal_
+
+## Demo
+For a demo, visit [https://bartzweers.github.io/native-js-modals/](https://bartzweers.github.io/native-js-modals/)
 
 ## Installation and usage
 
