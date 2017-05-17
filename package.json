@@ -1,6 +1,6 @@
 {
   "name": "native-js-modals",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple, native JS modals",
   "main": "js/native-modals.js",
   "scripts": {
