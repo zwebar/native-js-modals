@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Native JS Modals</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="page.css" type="text/css" media="screen, handheld, projection">
+
+    <script src="../js/native-modals.js"></script>
+    <link rel="stylesheet" href="../css/nmodal.css" type="text/css" media="screen, handheld, projection">
+
+</head>
+<body>
+<div>
+    <a href="" data-nmodal="testModal">Click here</a> to open a small modal.<br>
+    <a href="" data-nmodal="testModal2" data-nmodal-size="large">Click here</a> to open a large modal.<br>
+    <a href="" data-nmodal="testModal2" data-nmodal-size="max">Click here</a> to open a maximised modal.
+</div>
+
+<div id="testModal" class="nModal">
+    <form action="">
+        <div class="nModal-header">Modal 1</div>
+        <div class="nModal-body">Body of the modal</div>
+        <div class="nModal-buttons">
+            <a href="" class="nModal-button nModal-button__ok" data-nmodal-callback="callback">Ok</a>
+            <a href="" class="nModal-button nModal-button__cancel">Cancel</a>
+        </div>
+    </form>
+</div>
+<div id="testModal2" class="nModal">
+    <form action="">
+        <div class="nModal-header">Modal 2</div>
+        <div class="nModal-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto deserunt enim error, natus nihil odit reprehenderit tempore? Accusamus assumenda commodi consequuntur corporis dolor expedita explicabo iusto necessitatibus nobis similique. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, architecto commodi eius eos ex fugit in laboriosam molestias odit perspiciatis quas quidem reiciendis saepe sed sit tempore vel, veniam vero?
+        </div>
+        <div class="nModal-buttons">
+            <a href="" class="nModal-button nModal-button__ok" data-nmodal-callback="callback">Ok</a>
+            <a href="" class="nModal-button nModal-button__cancel">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        nModal.init({
+            watch: true,
+            backdrop: true
+        });
+
+        window.callback = function (arg) {
+            console.info('Callback', arg);
+            nModal.close();
+        };
+    });
+</script>
+</body>
+</html>
