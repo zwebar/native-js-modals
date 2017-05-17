@@ -54,9 +54,10 @@ nModal.init({ watch: true });
 There are also in-line properties you can access when triggering a modal.
 ```html
 <a  href=""
-    data-nmodal-target="testModal"
-    data-nmodal-size="max"
->Open a maximised modal that targets #testModal</a>
+    data-nmodal="testModal"
+    data-nmodal-size="max">
+    Open a maximised modal that targets #testModal
+</a>
 ```
 
 ### 5. You're done!
@@ -64,7 +65,7 @@ If you want to further customize the modal or use callbacks and custom functions
 
 ## Customization
 ### Using callbacks
-If you want to use a callback, add the ```data-nmodal-callback``` attribute, like so:
+If you want to use a callback, add the ```data-nmodal-callback``` attribute to an element within the modal, like so:
 
 ```html
 <a href="" data-nmodal-callback="callback">Click to activate callback</a>
@@ -72,7 +73,8 @@ If you want to use a callback, add the ```data-nmodal-callback``` attribute, lik
 
 ```javascript
 function callback(formElement){
-  console.log('callback called with', formElement);
+    console.log('Callback called', formElement);
+    nModal.close();
 }
 ```
 

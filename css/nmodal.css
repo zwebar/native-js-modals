@@ -5,7 +5,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; }
+  overflow: auto;
+  z-index: 999; }
   #nModal-container.active {
     display: block;
     -webkit-animation: fadein 200ms;
