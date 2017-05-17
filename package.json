@@ -1,9 +1,24 @@
 {
-    "name": "native-js-modals",
-    "version": "0.0.1",
-    "description": "Simple, native JS modals",
-    "main": "js/native-modals.js",
-    "scripts": {
-        "test": "echo \"No test specified\" && exit 1"
-    }
+  "name": "native-js-modals",
+  "version": "0.0.1",
+  "description": "Simple, native JS modals",
+  "main": "js/native-modals.js",
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bartzweers/native-js-modals.git"
+  },
+  "keywords": [
+    "native",
+    "modals",
+    "modal"
+  ],
+  "author": "Bart Zweers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bartzweers/native-js-modals/issues"
+  },
+  "homepage": "https://github.com/bartzweers/native-js-modals#readme"
 }
