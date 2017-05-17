@@ -1,0 +1,9 @@
+{
+    "name": "native-js-modals",
+    "version": "0.0.1",
+    "description": "Simple, native JS modals",
+    "main": "js/native-modals.js",
+    "scripts": {
+        "test": "echo \"No test specified\" && exit 1"
+    }
+}

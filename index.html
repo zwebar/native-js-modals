@@ -42,5 +42,19 @@
             </div>
         </form>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            nModal.init({
+                watch: true,
+                backdrop: true
+            });
+
+            window.callback = function (arg) {
+                console.info('Callback', arg);
+                nModal.close();
+            };
+        });
+    </script>
 </body>
 </html>
